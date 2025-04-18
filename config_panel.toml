@@ -8,7 +8,7 @@ services = []
         ask.en = "Use ZSH as default shell for all users (except root)"
         ask.fr = "Utiliser ZSH comme shell par défaut pour tous les utilisateurs (sauf root)"
         type = "boolean"
-        help.en = "After modifying this parameter, you need to rebbot your server."
+        help.en = "After modifying this parameter, you need to reboot your server."
         help.fr = "Après avoir modifié ce paramètre, vous devez redémarrer votre serveur."
 
         # [main.general.root_zsh]

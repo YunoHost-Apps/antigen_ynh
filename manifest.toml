@@ -28,12 +28,12 @@ disk = "50M"
 ram.build = "500M"
 ram.runtime = "50M"
 
-[install]
-    [install.default_zsh]
-    ask.en = "Do you want to use ZSH as default shell for all users (except root) ?"
-    ask.fr = "Souhaitez-vous utiliser ZSH comme shell par défaut pour tous les utilisateurs (sauf root) ?"
-    type = "boolean"
-    default = true
+# [install]
+#     [install.default_zsh]
+#     ask.en = "Do you want to use ZSH as default shell for all users (except root) ?"
+#     ask.fr = "Souhaitez-vous utiliser ZSH comme shell par défaut pour tous les utilisateurs (sauf root) ?"
+#     type = "boolean"
+#     default = true
 
     # [install.root_zsh]
     # ask.en = "Do you want to use ZSH as default shell for root user ?"
