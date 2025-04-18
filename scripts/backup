@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+#=================================================
+# GENERIC START
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
+source /usr/share/yunohost/helpers
+
+#=================================================
+# DECLARE DATA AND CONF FILES TO BACKUP
+#=================================================
+ynh_print_info --message="Declaring files to be backed up..."
+
+### N.B. : the following 'ynh_backup' calls are only a *declaration* of what needs
+### to be backuped and not an actual copy of any file. The actual backup that
+### creates and fills the archive with the files happens in the core after this
+### script is called. Hence ynh_backups calls take basically 0 seconds to run.
+
+#=================================================
+# BACKUP THE CONF FILES
+#=================================================
+
+ynh_backup --src_path="$ANTIGEN_LOADER_SCRIPT"
+ynh_backup --src_path="$ANTIGEN_DEFAULT_CONF"
+ynh_backup --src_path="/etc/zsh/zshrc"
+ynh_backup --src_path="/etc/nslcd.conf"
+
+# TODO add saving users antigenrc files
+
+#=================================================
+# END OF SCRIPT
+#=================================================
+
+ynh_print_info --message="Backup script completed for $app. (YunoHost will then actually copy those files to the archive)."

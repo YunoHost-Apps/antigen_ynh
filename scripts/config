@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+source _common.sh
+source /usr/share/yunohost/helpers
+
+ynh_abort_if_errors
+
+#=================================================
+# SPECIFIC GETTERS FOR TOML SHORT KEY
+#=================================================
+
+get__default_zsh() {
+    if _is_zsh_for_all_users; then
+        echo "value: true"
+    else
+        echo "value: false"
+    fi
+}
+
+
+get__root_zsh() {
+    if _is_zsh_for_root_user; then
+        echo "value: true"
+    else
+        echo "value: false"
+    fi
+}
+
+
+#=================================================
+# SPECIFIC VALIDATORS FOR TOML SHORT KEYS
+#=================================================
+
+
+#=================================================
+# SPECIFIC SETTERS FOR TOML SHORT KEYS
+#=================================================
+
+set__default_zsh() {
+    if [[ "$default_zsh" == "0" ]]; then
+        _unset_zsh_for_all_users
+    else
+        _set_zsh_for_all_users
+    fi
+}
+
+set__root_zsh() {
+    if [[ "$root_zsh" == "0" ]]; then
+        _unset_zsh_for_root_user
+    else
+        _set_zsh_for_root_user
+    fi
+}
+
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+ynh_app_config_run $1

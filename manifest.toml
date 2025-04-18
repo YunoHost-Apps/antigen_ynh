@@ -1,0 +1,48 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "antigen"
+name = "Antigen"
+description.en = "Manage your zsh plugins."
+description.fr = "Gère les plugins zsh."
+
+version = "2.2.3~ynh1"
+
+maintainers = ["Mistermasque"]
+
+[upstream]
+license = "MIT"
+admindoc = "https://github.com/zsh-users/antigen/wiki"
+code = "https://github.com/zsh-users/antigen"
+fund = "https://github.com/zsh-users/antigen/issues"
+
+
+[integration]
+yunohost = ">= 12.0.0"
+architectures = "all"
+multi_instance = false
+ldap = "not_relevant"
+sso = "not_relevant"
+disk = "50M"
+ram.build = "500M"
+ram.runtime = "50M"
+
+[install]
+    [install.default_zsh]
+    ask.en = "Do you want to use ZSH as default shell for all users (except root) ?"
+    ask.fr = "Souhaitez-vous utiliser ZSH comme shell par défaut pour tous les utilisateurs (sauf root) ?"
+    type = "boolean"
+    default = true
+
+    # [install.root_zsh]
+    # ask.en = "Do you want to use ZSH as default shell for root user ?"
+    # ask.fr = "Souhaitez-vous utiliser ZSH comme shell par défaut pour l'utilisateur root ?"
+    # type = "boolean"
+    # default = true
+
+[resources]
+    [resources.apt]
+    packages = [
+        "zsh-antigen",
+    ]

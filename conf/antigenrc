@@ -1,0 +1,19 @@
+# Load oh-my-zsh library
+antigen use oh-my-zsh
+
+# Load bundles from the default repo (oh-my-zsh)
+antigen bundle command-not-found
+
+# Load bundles from external repos
+#antigen bundle zsh-users/zsh-completions
+#antigen bundle zsh-users/zsh-autosuggestions
+#antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Select theme
+# We use liquidprompt by default. To modify is config, create a file /etc/liquidpromptrc as mentioned in doc :
+# https://liquidprompt.readthedocs.io/en/stable/config.html
+#antigen theme denysdovhan/spaceship-prompt
+antigen bundle liquidprompt/liquidprompt
+
+# Tell Antigen that you're done
+antigen apply
