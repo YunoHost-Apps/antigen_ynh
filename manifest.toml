@@ -4,8 +4,8 @@ packaging_format = 2
 
 id = "antigen"
 name = "Antigen"
-description.en = "Manage your zsh plugins."
-description.fr = "Gère les plugins zsh."
+description.en = "Manage your ZSH plugins"
+description.fr = "Gère les plugins ZSH"
 
 version = "2.2.3~ynh1"
 
@@ -19,18 +19,20 @@ fund = "https://github.com/zsh-users/antigen/issues"
 
 
 [integration]
-yunohost = ">= 12.0.0"
+yunohost = ">= 12.0.9"
 architectures = "all"
 multi_instance = false
+
 ldap = "not_relevant"
 sso = "not_relevant"
+
 disk = "2M"
 ram.build = "200M"
 ram.runtime = "10M"
 
 [install]
     [install.default_zsh]
-    ask.en = "Do you want to use ZSH as default shell for all users (except root) ?"
+    ask.en = "Do you want to use ZSH as default shell for all users (except root)?"
     ask.fr = "Souhaitez-vous utiliser ZSH comme shell par défaut pour tous les utilisateurs (sauf root) ?"
     type = "boolean"
     default = false
