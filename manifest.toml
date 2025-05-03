@@ -35,12 +35,6 @@ ram.runtime = "50M"
     type = "boolean"
     default = false
 
-    # [install.root_zsh]
-    # ask.en = "Do you want to use ZSH as default shell for root user ?"
-    # ask.fr = "Souhaitez-vous utiliser ZSH comme shell par défaut pour l'utilisateur root ?"
-    # type = "boolean"
-    # default = true
-
 [resources]
     [resources.apt]
     packages = [
