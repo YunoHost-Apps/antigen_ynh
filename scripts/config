@@ -3,7 +3,7 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-ynh_abort_if_errors
+#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # SPECIFIC GETTERS FOR TOML SHORT KEY
@@ -17,7 +17,6 @@ get__default_zsh() {
     fi
 }
 
-
 get__root_zsh() {
     if _is_zsh_for_root_user; then
         echo "value: true"
@@ -26,11 +25,9 @@ get__root_zsh() {
     fi
 }
 
-
 #=================================================
 # SPECIFIC VALIDATORS FOR TOML SHORT KEYS
 #=================================================
-
 
 #=================================================
 # SPECIFIC SETTERS FOR TOML SHORT KEYS
@@ -52,7 +49,5 @@ set__root_zsh() {
     fi
 }
 
-#=================================================
-# GENERIC FINALIZATION
 #=================================================
 ynh_app_config_run $1

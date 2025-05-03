@@ -3,13 +3,12 @@
 ANTIGEN_LOADER_SCRIPT="/usr/share/zsh-antigen/load-antigen.zsh"
 ANTIGEN_DEFAULT_CONF="/etc/antigenrc"
 
-
 # Configure zsh as default login shell for all users
 _set_zsh_for_all_users() {
     if _is_zsh_for_all_users; then
         return 0
     fi
-   
+
     echo 'map passwd loginShell "/bin/zsh"' >> "/etc/nslcd.conf"
     return 0
 }
@@ -38,7 +37,7 @@ _set_zsh_for_root_user() {
     if _is_zsh_for_root_user; then
         return 0
     fi
-   
+
     chsh -s "/bin/zsh" root
     return 0
 }
@@ -62,7 +61,6 @@ _is_zsh_for_root_user() {
     fi
 }
 
-
 # Add loading antigen for zsh by default
 _enable_loading_antigen_by_default() {
 
@@ -73,7 +71,6 @@ _enable_loading_antigen_by_default() {
     echo "source \"$ANTIGEN_LOADER_SCRIPT\"" >> "/etc/zsh/zshrc"
     return 0
 }
-
 
 # Delete loading antigen for zsh by default
 _disable_loading_antigen_by_default() {
