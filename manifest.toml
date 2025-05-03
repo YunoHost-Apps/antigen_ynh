@@ -24,9 +24,9 @@ architectures = "all"
 multi_instance = false
 ldap = "not_relevant"
 sso = "not_relevant"
-disk = "50M"
-ram.build = "500M"
-ram.runtime = "50M"
+disk = "2M"
+ram.build = "200M"
+ram.runtime = "10M"
 
 [install]
     [install.default_zsh]
