@@ -8,7 +8,7 @@ It shall NOT be edited by hand.
   Antigen, packaged for YunoHost
 </h1>
 
-Manage your zsh plugins.
+Manage your ZSH plugins
 
 [![Version: 2.2.3~ynh1](https://img.shields.io/badge/Version-2.2.3~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/antigen/)
 
