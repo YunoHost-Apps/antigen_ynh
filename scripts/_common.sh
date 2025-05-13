@@ -3,7 +3,9 @@
 ANTIGEN_LOADER_SCRIPT="/usr/share/zsh-antigen/load-antigen.zsh"
 ANTIGEN_DEFAULT_CONF="/etc/antigenrc"
 
+
 # Configure zsh as default login shell for all users
+# DEPRECATED
 _set_zsh_for_all_users() {
     if _is_zsh_for_all_users; then
         return 0
@@ -13,7 +15,8 @@ _set_zsh_for_all_users() {
     return 0
 }
 
-# Restore default login shell for al users
+# Restore default login shell for all users
+# Used only in upgrade script to delete legacy conf
 _unset_zsh_for_all_users() {
     if ! _is_zsh_for_all_users; then
         return 0
@@ -24,6 +27,7 @@ _unset_zsh_for_all_users() {
 }
 
 # Check if zsh is enabled for all users
+# Used only in upgrade script to delete legacy conf
 _is_zsh_for_all_users() {
     if grep -q 'map passwd loginShell "/bin/zsh"' "/etc/nslcd.conf"; then
         return 0

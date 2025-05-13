@@ -15,7 +15,10 @@ ynh_script_progression "Restoring config files..."
 ynh_restore "$ANTIGEN_LOADER_SCRIPT"
 ynh_restore "$ANTIGEN_DEFAULT_CONF"
 ynh_restore "/etc/zsh/zshrc"
-ynh_restore "/etc/nslcd.conf"
+ynh_restore "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
+
+ynh_script_progression "Update nslcd configuration..."
+yunohost tools regen-conf nslcd
 
 #=================================================
 # END OF SCRIPT

@@ -20,7 +20,16 @@ ynh_config_add --template="antigenrc" --destination="$ANTIGEN_DEFAULT_CONF"
 chown root:root "$ANTIGEN_DEFAULT_CONF"
 chmod o+r "$ANTIGEN_DEFAULT_CONF"
 
+ynh_script_progression "Add hook script..."
+mkdir -p /etc/yunohost/hooks.d/conf_regen
+ynh_config_add --template="conf_regen" --destination="/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
+chmod go=--- "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
+
+ynh_script_progression "Enable antigen loading for zsh..."
 _enable_loading_antigen_by_default
+
+ynh_script_progression "Update nslcd configuration..."
+yunohost tools regen-conf nslcd
 
 #=================================================
 # END OF SCRIPT
