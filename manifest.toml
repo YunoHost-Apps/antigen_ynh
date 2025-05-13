@@ -7,7 +7,7 @@ name = "Antigen"
 description.en = "Manage your ZSH plugins"
 description.fr = "Gère les plugins ZSH"
 
-version = "2.2.3~ynh2"
+version = "2.2.3~ynh3"
 
 maintainers = ["Mistermasque"]
 
@@ -27,8 +27,8 @@ ldap = "not_relevant"
 sso = "not_relevant"
 
 disk = "2M"
-ram.build = "200M"
-ram.runtime = "10M"
+ram.build = "100M"
+ram.runtime = "7M"
 
 [install]
     [install.default_zsh]

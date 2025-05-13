@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+action=$1
+pending_dir=$4
+nslcd_conf="$pending_dir/../nslcd/etc/nslcd.conf"
+
+[[ "$action" == "pre" ]] || exit 0
+[[ -e $nslcd_conf ]] || exit 0
+
+default_zsh=$(sudo yunohost app setting "__APP__" default_zsh)
+if [[ "$default_zsh" == "1" ]]; then
+    echo '
+# Modifying default shell by zsh (added with antigen app)
+map passwd loginShell "/bin/zsh"' >>"$nslcd_conf"
+fi

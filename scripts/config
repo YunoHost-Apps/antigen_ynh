@@ -3,19 +3,9 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-#REMOVEME? ynh_abort_if_errors
-
 #=================================================
 # SPECIFIC GETTERS FOR TOML SHORT KEY
 #=================================================
-
-get__default_zsh() {
-    if _is_zsh_for_all_users; then
-        echo "value: true"
-    else
-        echo "value: false"
-    fi
-}
 
 get__root_zsh() {
     if _is_zsh_for_root_user; then
@@ -33,12 +23,13 @@ get__root_zsh() {
 # SPECIFIC SETTERS FOR TOML SHORT KEYS
 #=================================================
 
+# We need to create this specific setters in order to call regen-conf
+# (nslcd.conf is updated with conf_regen hook)
 set__default_zsh() {
-    if [[ "$default_zsh" == "0" ]]; then
-        _unset_zsh_for_all_users
-    else
-        _set_zsh_for_all_users
-    fi
+    ynh_app_setting_set --app="$app" --key="default_zsh" --value="$default_zsh"
+    yunohost tools regen-conf nslcd
+
+    return 0
 }
 
 set__root_zsh() {

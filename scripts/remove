@@ -10,14 +10,19 @@ source /usr/share/yunohost/helpers
 #=================================================
 # REMOVE ANTIGEN LOADING SCRIPT
 #=================================================
-ynh_script_progression "Remove antigen loading scripts..."
 
+ynh_script_progression "Disable antigen loading for zsh..."
 _disable_loading_antigen_by_default
-_unset_zsh_for_all_users
-#_unset_zsh_for_root_user
 
+ynh_script_progression "Remove antigen loading scripts..."
 ynh_safe_rm "$ANTIGEN_LOADER_SCRIPT"
 ynh_safe_rm "$ANTIGEN_DEFAULT_CONF"
+
+ynh_script_progression "Remove hook script..."
+ynh_safe_rm "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
+
+ynh_script_progression "Update nslcd configuration..."
+yunohost tools regen-conf nslcd
 
 #=================================================
 # END OF SCRIPT
