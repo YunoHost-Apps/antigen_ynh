@@ -28,7 +28,7 @@ if [[ -z "$default_zsh" ]]; then
     _unset_zsh_for_all_users
 
     ynh_script_progression "Update nslcd configuration..."
-    yunohost tools regen-conf nslcd
+    yunohost tools regen-conf nslcd -f
 fi
 
 #=================================================
