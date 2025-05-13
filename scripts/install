@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#=================================================
-# GENERIC START
+
 #=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
@@ -9,22 +8,15 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STORE SETTINGS FROM MANIFEST
-#=================================================
-
-
-#=================================================
-# SPECIFIC SETUP
-#=================================================
 # INSTALL ANTIGEN LOADING SCRIPT
 #=================================================
-ynh_script_progression --message="Install antigen loading scripts..." --weight=1
+ynh_script_progression "Install antigen loading scripts..."
 
-ynh_add_config --template="load-antigen.zsh" --destination="$ANTIGEN_LOADER_SCRIPT"
+ynh_config_add --template="load-antigen.zsh" --destination="$ANTIGEN_LOADER_SCRIPT"
 chown root:root "$ANTIGEN_LOADER_SCRIPT"
 chmod o+r "$ANTIGEN_LOADER_SCRIPT"
 
-ynh_add_config --template="antigenrc" --destination="$ANTIGEN_DEFAULT_CONF"
+ynh_config_add --template="antigenrc" --destination="$ANTIGEN_DEFAULT_CONF"
 chown root:root "$ANTIGEN_DEFAULT_CONF"
 chmod o+r "$ANTIGEN_DEFAULT_CONF"
 
@@ -34,4 +26,4 @@ _enable_loading_antigen_by_default
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
