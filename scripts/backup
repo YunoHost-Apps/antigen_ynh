@@ -16,7 +16,7 @@ ynh_print_info "Declaring files to be backed up..."
 ynh_backup "$ANTIGEN_LOADER_SCRIPT"
 ynh_backup "$ANTIGEN_DEFAULT_CONF"
 ynh_backup "/etc/zsh/zshrc"
-ynh_backup "/etc/nslcd.conf"
+ynh_backup "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
 
 # TODO add saving users antigenrc files
 
