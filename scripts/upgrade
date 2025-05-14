@@ -10,25 +10,26 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 
+
 #=================================================
 # UPDATE LEGACY CONF
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-default_zsh=$(ynh_app_setting_get --key="default_zsh")
+needs_regen_nslcd=false
 
-if [[ -z "$default_zsh" ]]; then
-    if _is_zsh_for_all_users; then
-        ynh_app_setting_set --key="default_zsh" --value="1"
-    else
-        ynh_app_setting_set --key="default_zsh" --value="0"
+if _is_zsh_for_all_users; then
+
+    # Zsh setted without this line means old configuration
+    if ! grep -q '# Modifying default shell by zsh (added with antigen app)' "/etc/nslcd.conf"; then
+        # Delete unordinary conf setted before
+        _unset_zsh_for_all_users
+
+        ynh_app_setting_set --key="default_zsh" --value=1
+        needs_regen_nslcd=true
     fi
-    
-    # Delete unordinary conf setted before
-    _unset_zsh_for_all_users
-
-    ynh_script_progression "Update nslcd configuration..."
-    yunohost tools regen-conf nslcd -f
+else
+    ynh_app_setting_set --key="default_zsh" --value=0
 fi
 
 #=================================================
@@ -39,6 +40,14 @@ ynh_script_progression "Add hook script..."
 mkdir -p /etc/yunohost/hooks.d/conf_regen
 ynh_config_add --template="conf_regen" --destination="/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
 chmod go=--- "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
+
+#=================================================
+# REGENG NSLCD
+#=================================================
+if [[ $needs_regen_nslcd == true ]]; then
+    ynh_script_progression "Update nslcd configuration..."
+    yunohost tools regen-conf nslcd -f
+fi
 
 #=================================================
 # END OF SCRIPT

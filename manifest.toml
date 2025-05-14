@@ -7,7 +7,7 @@ name = "Antigen"
 description.en = "Manage your ZSH plugins"
 description.fr = "Gère les plugins ZSH"
 
-version = "2.2.3~ynh3"
+version = "2.2.3~ynh4"
 
 maintainers = ["Mistermasque"]
 
