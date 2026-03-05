@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
 source _common.sh
 source /usr/share/yunohost/helpers
-
-
 
 #=================================================
 # UPDATE LEGACY CONF
@@ -35,8 +31,8 @@ fi
 #=================================================
 # SETUP THE CONF REGENG HOOK
 #=================================================
-
 ynh_script_progression "Add hook script..."
+
 mkdir -p /etc/yunohost/hooks.d/conf_regen
 ynh_config_add --template="conf_regen" --destination="/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
 chmod go=--- "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
@@ -44,6 +40,7 @@ chmod go=--- "/etc/yunohost/hooks.d/conf_regen/10-nslcd_${app}_app"
 #=================================================
 # REGENG NSLCD
 #=================================================
+
 if [[ $needs_regen_nslcd == true ]]; then
     ynh_script_progression "Update nslcd configuration..."
     yunohost tools regen-conf nslcd -f
