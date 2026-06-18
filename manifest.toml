@@ -18,7 +18,7 @@ code = "https://github.com/zsh-users/antigen"
 fund = "https://github.com/zsh-users/antigen/issues"
 
 [integration]
-yunohost = ">= 12.1.38"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
